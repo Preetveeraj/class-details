@@ -1,0 +1,120 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>III B.Sc. Computer Science - Timetable</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 15px;
+      margin: 0;
+      background-color: #eef4fa;
+      color: #333;
+    }
+    .container {
+      background-color: white;
+      padding: 20px;
+      border-radius: 10px;
+      max-width: 100%;
+      margin: auto;
+      box-shadow: 0px 4px 12px rgba(0,0,0,0.1);
+    }
+    h2 {
+      text-align: center;
+      font-size: 7vw;
+      margin-bottom: 5vw;
+    }
+    p {
+      font-size: 5.5vw;
+      margin: 3vw 0;
+      line-height: 1.4;
+    }
+    .label {
+      font-weight: bold;
+    }
+
+    @media (min-width: 768px) {
+      h2 { font-size: 32px; }
+      p { font-size: 22px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Ⅲ B.Sc. Computer Science Class</h2>
+    <p><span class="label">Date:</span> <span id="date"></span></p>
+    <p><span class="label">Day:</span> <span id="day"></span></p>
+    <p><span class="label">Time:</span> <span id="time"></span></p>
+    <p><span class="label">Class Timing:</span> 9:30 AM – 4:30 PM</p>
+    <p><span class="label">Period:</span> <span id="period"></span></p>
+    <p><span class="label">Period Time:</span> <span id="periodTime"></span></p>
+    <p><span class="label">Staff:</span> <span id="staff"></span></p>
+  </div>
+
+  <script>
+    const timetable = {
+      "MONDAY": [["9:30", "10:30", "DBMS - Lab", "M.Preetha"],["10:30", "11:25", "DBMS - Lab", "M.Preetha"],["11:25", "11:35", "Break Period", ""],["11:35", "12:30", "DBMS - Lab", "M.Preetha"],["12:30", "13:30", "Lunch Period", ""],["13:30", "14:30", "Software Engineering", "V.Kalaimani"],["14:30", "15:25", "DBMS", "M.Preetha"],["15:25", "15:35", "Break Period", ""],["15:35", "16:30", "Project-N.S", "N.Sathish"]],
+      "TUESDAY": [["9:30", "10:30", "Agile project management", "M.Sakthivel"],["10:30", "11:25", "Software Engineering", "V.Kalaimani"],["11:25", "11:35", "Break Period", ""],["11:35", "12:30", "Agile project management", "M.Sakthivel"],["12:30", "13:30", "Lunch Period", ""],["13:30", "14:30", "Software Project Management System", "R.Suguna"],["14:30", "15:25", "Software Engineering", "V.Kalaimani"],["15:25", "15:35", "Break Period", ""],["15:35", "16:30", "Value Education", "R.Suguna"]],
+      "WEDNESDAY": [["9:30", "10:30", "Software Project Management System", "R.Suguna"],["10:30", "11:25", "DBMS", "M.Preetha"],["11:25", "11:35", "Break Period", ""],["11:35", "12:30", "Agile project management", "M.Sakthivel"],["12:30", "13:30", "Lunch Period", ""],["13:30", "14:30", "Software Project Management System", "R.Suguna"],["14:30", "15:25", "DBMS - Lab", "M.Preetha"],["15:25", "15:35", "Break Period", ""],["15:35", "16:30", "DBMS - Lab", "M.Preetha"]],
+      "THURSDAY": [["9:30", "10:30", "DBMS", "M.Preetha"],["10:30", "11:25", "Software Engineering", "V.Kalaimani"],["11:25", "11:35", "Break Period", ""],["11:35", "12:30", "Agile project management", "M.Sakthivel"],["12:30", "13:30", "Lunch Period", ""],["13:30", "14:30", "DBMS", "M.Preetha"],["14:30", "15:25", "Project-M.S", "M.Sakthivel"],["15:25", "15:35", "Break Period", ""],["15:35", "16:30", "Project-R.N", "R.Nithya"]],
+      "FRIDAY": [["9:30", "10:30", "DBMS", "M.Preetha"],["10:30", "11:25", "Project-R.S", "R.Suguna"],["11:25", "11:35", "Break Period", ""],["11:35", "12:30", "Project-M.P", "M.Preetha"],["12:30", "13:30", "Lunch Period", ""],["13:30", "14:30", "Software Engineering", "V.Kalaimani"],["14:30", "15:25", "Value Education", "R.Suguna"],["15:25", "15:35", "Break Period", ""],["15:35", "16:30", "Software Project Management System", "R.Suguna"]]
+    };
+
+    // Capture scanned time ONCE
+    const scanTime = new Date();
+    const scanDay = scanTime.toLocaleDateString('en-US', { weekday: 'long' }).toUpperCase();
+    const scanDate = scanTime.toLocaleDateString();
+    const scanTimeStr = scanTime.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit", hour12: true });
+
+    function formatTime12Hour(time24) {
+      const [h, m] = time24.split(":").map(Number);
+      const ampm = h >= 12 ? "PM" : "AM";
+      const hour12 = h % 12 === 0 ? 12 : h % 12;
+      return `${hour12}:${m.toString().padStart(2, '0')} ${ampm}`;
+    }
+
+    function showScannedInfo() {
+      document.getElementById("date").textContent = scanDate;
+      document.getElementById("day").textContent = scanDay;
+      document.getElementById("time").textContent = scanTimeStr;
+    }
+
+    function updatePeriodLive() {
+      const now = new Date();
+      const today = now.toLocaleDateString('en-US', { weekday: 'long' }).toUpperCase();
+      const minutesNow = now.getHours() * 60 + now.getMinutes();
+      const schedule = timetable[today];
+      let found = false;
+
+      if (schedule) {
+        for (const [start, end, subject, staff] of schedule) {
+          const [sh, sm] = start.split(":").map(Number);
+          const [eh, em] = end.split(":").map(Number);
+          const startMin = sh * 60 + sm;
+          const endMin = eh * 60 + em;
+          if (minutesNow >= startMin && minutesNow <= endMin) {
+            document.getElementById("period").textContent = subject;
+            document.getElementById("periodTime").textContent = formatTime12Hour(start) + " to " + formatTime12Hour(end);
+            document.getElementById("staff").textContent = staff || "-";
+            found = true;
+            break;
+          }
+        }
+      }
+      if (!found) {
+        document.getElementById("period").textContent = "No current period";
+        document.getElementById("periodTime").textContent = "-";
+        document.getElementById("staff").textContent = "-";
+      }
+    }
+
+    window.onload = function () {
+      showScannedInfo();          // Fixed at page load
+      updatePeriodLive();         // Start live update
+      setInterval(updatePeriodLive, 60000); // Repeat every 1 minute
+    };
+  </script>
+</body>
+</html>
