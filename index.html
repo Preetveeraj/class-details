@@ -219,7 +219,7 @@ const getCurrentPeriodIndex = now => {
   return -1;
 };
 
-// ✅ UPDATED DISPLAY FUNCTION WITH PERIOD COUNT
+// ✅ UPDATED DISPLAY FUNCTION WITH ORANGE PERIOD NUMBER
 const display = (id, timetable, staff) => {
   const now = new Date();
   const currentDay = weekdays[now.getDay()];
@@ -238,7 +238,7 @@ const display = (id, timetable, staff) => {
   if (rawSubject.toLowerCase().includes("break") || rawSubject.toLowerCase().includes("lunch")) {
     const displayLabel = rawSubject.toLowerCase().includes("break") ? "Break Period" : "Lunch Period";
     el.innerHTML = `
-      <div class="info-line"><span class="highlight">Period:</span> ${displayLabel}</div>
+      <div class="info-line">${displayLabel}</div>
       <div class="info-line"><span class="highlight">Period Time:</span> ${time}</div>
     `;
   } else {
@@ -249,7 +249,7 @@ const display = (id, timetable, staff) => {
       if (!s.toLowerCase().includes("break") && !s.toLowerCase().includes("lunch") && s !== "Free") count++;
     }
     el.innerHTML = `
-      <div class="info-line"><span class="highlight">Period:</span> Period ${count}: ${rawSubject}</div>
+      <div class="info-line"><span class="highlight">Period ${count}:</span> ${rawSubject}</div>
       <div class="info-line"><span class="highlight">Period Time:</span> ${time}</div>
       <div class="info-line"><span class="highlight">Staff:</span> ${staff[rawSubject] || "-"}</div>
     `;
