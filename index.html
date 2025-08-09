@@ -107,17 +107,17 @@
     </div>
 
     <div id="cs" class="section">
-      <h3>II B.Sc-CS</h3>
+      <h3>I B.Sc-CS</h3>
       <div id="cs-period"></div>
     </div>
 
     <div id="ai" class="section">
-      <h3>II B.Sc-CS (AI & DS)</h3>
+      <h3>I B.Sc-CS (AI & DS)</h3>
       <div id="ai-period"></div>
     </div>
 
     <div id="bca" class="section">
-      <h3>II BCA</h3>
+      <h3>I BCA</h3>
       <div id="bca-period"></div>
     </div>
   </main>
@@ -155,58 +155,58 @@ const timeSlots = [
   ["2:30 PM", "3:25 PM"], ["3:25 PM", "3:35 PM"], ["3:35 PM", "4:30 PM"]
 ];
 
+// I B.Sc CS Timetable & Staff
 const csTimetable = {
-  "Monday": ["Tamil", "Numerical Method-I", "break period", "English", "lunch period", "Web Design", "Tamil", "break period", "Microprocessor"],
-  "Tuesday": ["Microprocessor Lab", "Microprocessor Lab", "break period", "Microprocessor Lab", "lunch period", "English", "Tamil", "break period", "Microprocessor"],
-  "Wednesday": ["Numerical Method-I", "Tamil", "break period", "Microprocessor", "lunch period", "Naan Mudhalvan", "English", "break period", "General Awareness"],
-  "Thursday": ["Tamil", "Numerical Method-I", "break period", "English", "lunch period", "Microprocessor", "Naan Mudhalvan", "break period", "English"],
-  "Friday": ["Numerical Method-I", "Microprocessor", "break period", "Numerical Method-I", "lunch period", "Web Design", "Tamil", "break period", "English"]
+  "Monday": ["Maths", "English", "break period", "Tamil", "lunch period", "Maths", "Python", "break period", "English"],
+  "Tuesday": ["English", "Maths", "break period", "Tamil", "lunch period", "Phython Lab", "Phython Lab", "break period", "Phython Lab"],
+  "Wednesday": ["Maths", "Python", "break period", "Maths", "lunch period", "English", "Yoga", "break period", "NMEC"],
+  "Thursday": ["English", "Python", "break period", "Tamil", "lunch period", "Phython", "Tamil", "break period", "NMEC"],
+  "Friday": ["English", "Python", "break period", "Tamil", "lunch period", "Maths", "Tamil", "break period", "Yoga"]
 };
 const csStaff = {
-  "Tamil": "Mr.K.Kannan",
-  "Numerical Method-I": "Mr.K.Jagadeesan",
-  "English": "Mr.S.Prasanth",
-  "Microprocessor": "Mr.T.Murugan",
-  "Web Design": "Mr.N.Satheeskumar",
-  "Microprocessor Lab": "Mr.T.Murugan",
-  "Naan Mudhalvan": "Mr.G.Vijaybaskar",
-  "General Awareness": "Mr.N.Satheeskumar"
+  "Tamil": "Mr.A.Sathish",
+  "English": "Mr.U.Vijayasarathi",
+  "Maths": "Ms.S.Bhuvana",
+  "Python": "Mr.M.Sakthivel",
+  "Phython Lab": "Mr.M.Sakthivel",
+  "Yoga": "-",
+  "NMEC": "-"
 };
 
+// I B.Sc CS (AI & DS) Timetable & Staff
 const aiTimetable = {
-  "Monday": ["Tamil", "Numerical methods-I", "break period", "English", "lunch period", "Web Design", "Tamil", "break period", "Foundation of Artificial Intelligence"],
-  "Tuesday": ["Internet Programming Lab", "Internet Programming Lab", "break period", "Internet Programming Lab", "lunch period", "English", "Tamil", "break period", "Foundation of Artificial Intelligence"],
-  "Wednesday": ["Foundation of Artificial Intelligence", "Tamil", "break period", "Numerical methods-I", "lunch period", "Naan Mudhalvan", "English", "break period", "General Awareness"],
-  "Thursday": ["Tamil", "Numerical methods-I", "break period", "English", "lunch period", "Naan Mudhalvan", "Foundation of Artificial Intelligence", "break period", "English"],
-  "Friday": ["Numerical methods-I", "Foundation of Artificial Intelligence", "break period", "Numerical methods-I", "lunch period", "Web Design", "Tamil", "break period", "English"]
+  "Monday": ["Maths", "English", "break period", "Tamil", "lunch period", "Maths", "Data structure", "break period", "English"],
+  "Tuesday": ["English", "Maths", "break period", "Tamil", "lunch period", "Computer Programming Lab", "Computer Programming Lab", "break period", "Computer Programming Lab"],
+  "Wednesday": ["Maths", "Data structure", "break period", "Maths", "lunch period", "English", "Yoga", "break period", "NMEC"],
+  "Thursday": ["English", "Data structure", "break period", "Tamil", "lunch period", "Data structure", "Tamil", "break period", "NMEC"],
+  "Friday": ["English", "Data structure", "break period", "Tamil", "lunch period", "Maths", "Tamil", "break period", "Yoga"]
 };
 const aiStaff = {
-  "Tamil": "Mr.K.Kannan",
-  "English": "Mr.S.Prasanth",
-  "Numerical methods-I": "Mr.K.Jagadeesan",
-  "Internet Programming Lab": "Mrs.M.Preetha",
-  "Foundation of Artificial Intelligence": "Mrs.M.Preetha",
-  "Web Design": "Mr.N.Satheeskumar",
-  "Naan Mudhalvan": "Mr.G.Vijaybaskar",
-  "General Awareness": "Mr.N.Satheeskumar"
+  "Tamil": "Mr.A.Sathish",
+  "English": "Mr.U.Vijayasarathi",
+  "Maths": "Ms.S.Bhuvana",
+  "Data structure": "Mrs.R.Nithya",
+  "Computer Programming Lab": "Mrs.R.Nithya",
+  "Yoga": "-",
+  "NMEC": "-"
 };
 
+// I BCA Timetable & Staff
 const bcaTimetable = {
-  "Monday": ["Tamil", "A/C", "break period", "English", "lunch period", "Problem Solving Techniques", "Tamil", "break period", "Data Structure"],
-  "Tuesday": ["Data Structure Lab", "Data Structure Lab", "break period", "Data Structure Lab", "lunch period", "English", "Tamil", "break period", "Data Structure"],
-  "Wednesday": ["A/C", "Tamil", "break period", "Data Structure", "lunch period", "Naan Mudhalvan", "English", "break period", "General Awareness"],
-  "Thursday": ["Tamil", "A/C", "break period", "English", "lunch period", "Naan Mudhalvan", "Data Structure", "break period", "English"],
-  "Friday": ["A/C", "Data Structure", "break period", "A/C", "lunch period", "Problem Solving Techniques", "Tamil", "break period", "English"]
+  "Monday": ["Maths", "English", "break period", "Tamil", "lunch period", "Maths", "Python", "break period", "English"],
+  "Tuesday": ["English", "Maths", "break period", "Tamil", "lunch period", "Phython Lab", "Phython Lab", "break period", "Phython Lab"],
+  "Wednesday": ["Maths", "Python", "break period", "Maths", "lunch period", "English", "Yoga", "break period", "NMEC"],
+  "Thursday": ["English", "Python", "break period", "Tamil", "lunch period", "Phython", "Tamil", "break period", "NMEC"],
+  "Friday": ["English", "Python", "break period", "Tamil", "lunch period", "Maths", "Tamil", "break period", "Yoga"]
 };
 const bcaStaff = {
-  "Tamil": "Mr.K.Kannan",
-  "A/C": "Mr.R.Manivelan",
-  "English": "Mr.S.Prasanth",
-  "Data Structure Lab": "Mrs.R.Suguna",
-  "Data Structure": "Mrs.R.Suguna",
-  "Problem Solving Techniques": "Mr.M.sakthivel",
-  "Naan Mudhalvan": "Mr.G.Vijaybaskar",
-  "General Awareness": "Mr.N.Satheeskumar"
+  "Tamil": "Mr.A.Sathish",
+  "English": "Mr.U.Vijayasarathi",
+  "Maths": "Ms.S.Bhuvana",
+  "Python": "Mr.M.Sakthivel",
+  "Phython Lab": "Mr.M.Sakthivel",
+  "Yoga": "",
+  "NMEC": ""
 };
 
 const getCurrentPeriodIndex = now => {
@@ -219,7 +219,7 @@ const getCurrentPeriodIndex = now => {
   return -1;
 };
 
-// ✅ DISPLAY FUNCTION WITH ORANGE PERIOD LABEL FOR ALL
+// ✅ Updated display function
 const display = (id, timetable, staff) => {
   const now = new Date();
   const currentDay = weekdays[now.getDay()];
@@ -249,7 +249,9 @@ const display = (id, timetable, staff) => {
     const todayList = timetable[currentDay];
     for (let i = 0; i <= index; i++) {
       const s = todayList[i];
-      if (!s.toLowerCase().includes("break") && !s.toLowerCase().includes("lunch") && s !== "Free") count++;
+      if (!s.toLowerCase().includes("break") && !s.toLowerCase().includes("lunch") && s !== "Free") {
+        count++;
+      }
     }
     el.innerHTML = `
       <div class="info-line"><span class="highlight">Period ${count}:</span> ${rawSubject}</div>
