@@ -219,12 +219,13 @@ const getCurrentPeriodIndex = now => {
   return -1;
 };
 
-// ✅ UPDATED DISPLAY FUNCTION WITH ORANGE PERIOD NUMBER
+// ✅ DISPLAY FUNCTION WITH ORANGE PERIOD LABEL FOR ALL
 const display = (id, timetable, staff) => {
   const now = new Date();
   const currentDay = weekdays[now.getDay()];
   const el = document.getElementById(id + "-period");
   const index = getCurrentPeriodIndex(now);
+
   if (!timetable[currentDay]) {
     el.innerHTML = `<div class="info-line">No classes scheduled today.</div>`;
     return;
@@ -233,12 +234,14 @@ const display = (id, timetable, staff) => {
     el.innerHTML = `<div class="info-line">Outside college hours.</div>`;
     return;
   }
+
   const rawSubject = timetable[currentDay][index];
   const time = `${timeSlots[index][0]} - ${timeSlots[index][1]}`;
+
   if (rawSubject.toLowerCase().includes("break") || rawSubject.toLowerCase().includes("lunch")) {
     const displayLabel = rawSubject.toLowerCase().includes("break") ? "Break Period" : "Lunch Period";
     el.innerHTML = `
-      <div class="info-line">${displayLabel}</div>
+      <div class="info-line"><span class="highlight">Period:</span> ${displayLabel}</div>
       <div class="info-line"><span class="highlight">Period Time:</span> ${time}</div>
     `;
   } else {
